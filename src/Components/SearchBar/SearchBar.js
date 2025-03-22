@@ -4,8 +4,7 @@ import { FormControl, FormGroup } from 'react-bootstrap';
 
 function SearchBar() {
     return (
-        <>  
-            <div className='m-5'>
+            <div className='p-5'>
                 <Form>
                     <FormGroup>
                         <FormControl type='text' placeholder='Dyask' />
@@ -13,7 +12,6 @@ function SearchBar() {
                 </Form>
                 <Button>Search</Button>
             </div>
-        </>
     );
 }
 

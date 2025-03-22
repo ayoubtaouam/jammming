@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import Tracklist from './Components/Tracklist/Tracklist';
 import SearchBar from './Components/SearchBar/SearchBar';
 import Header from './Components/Header/Header';
@@ -61,8 +60,15 @@ function App() {
   return (
     <>
       <Header />
-      <SearchBar />
-      <Tracklist tracks={tracks} />
+      <div className='bg-success-subtle'>
+        <SearchBar />
+        <div className='w-2 d-inline'>
+          <Tracklist tracks={tracks} />
+        </div>
+        <div className='d-inline'>
+
+        </div>
+      </div>
     </>
   );
 }
