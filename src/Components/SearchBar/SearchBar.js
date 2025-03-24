@@ -1,16 +1,19 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { FormControl, FormGroup } from 'react-bootstrap';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 function SearchBar() {
     return (
-            <div className='p-5'>
-                <Form>
+            <div className='d-flex justify-content-center align-items-center pt-5'>
+                <Form className='w-50'>
                     <FormGroup>
-                        <FormControl type='text' placeholder='Dyask' />
+                        <InputGroup>
+                            <FormControl type='text' placeholder='Dyask' />
+                            <Button>Search</Button>
+                        </InputGroup>
                     </FormGroup>
                 </Form>
-                <Button>Search</Button>
             </div>
     );
 }
