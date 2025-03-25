@@ -1,12 +1,10 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 
-function Track({track, playlist, setPlaylist}) {
+function PlaylistTrack({track, setPlaylist}) {
 
     const handleClick = () => {
-        if (!playlist.includes(track)) {
-            setPlaylist((prev) => [...prev, track]);
-        }
-    }
+        setPlaylist((prev) => prev.filter(t => t !== track));
+    }    
 
     return (
         <ListGroup.Item className='bg-success text-white'>
@@ -17,7 +15,7 @@ function Track({track, playlist, setPlaylist}) {
                     <p className='fw-light m-1 d-inline'>{track.album}</p>
                 </div>
                 <div>
-                    <p onClick={handleClick} className='fs-1 user-select-none'>+</p>
+                    <p onClick={handleClick} className='fs-1 user-select-none'>-</p>
                 </div>
             </div>
 
@@ -25,4 +23,4 @@ function Track({track, playlist, setPlaylist}) {
     );
 }
 
-export default Track;
+export default PlaylistTrack;

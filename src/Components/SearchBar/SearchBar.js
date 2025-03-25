@@ -10,7 +10,7 @@ function SearchBar() {
                     <FormGroup>
                         <InputGroup>
                             <FormControl type='text' placeholder='Dyask' />
-                            <Button>Search</Button>
+                            <Button variant='success'>Search</Button>
                         </InputGroup>
                     </FormGroup>
                 </Form>
