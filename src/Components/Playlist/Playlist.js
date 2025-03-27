@@ -1,5 +1,6 @@
 import { Card, ListGroup, Button, ListGroupItem, Form, FormControl } from "react-bootstrap";
 import PlaylistTrack from "../PlaylistTrack/PlaylistTrack";
+import './PlaylistStyles.css';
 
 function Playlist({playlist, setPlaylist}) {
     return (
@@ -8,7 +9,7 @@ function Playlist({playlist, setPlaylist}) {
                 <Form>
                     <FormControl type="text" 
                                  placeholder="Playlist name..." 
-                                 className="bg-success bg-opacity-75 p-0 border border-0 text-light fw-bolder fs-2"></FormControl>
+                                 className="bg-success bg-opacity-10 p-0 border border-0 text-light fw-bolder fs-2 focus-ring focus-ring-success custom-placeholder"></FormControl>
                 </Form>
             </Card.Header>
             <ListGroup variant="flush">

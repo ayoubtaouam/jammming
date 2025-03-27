@@ -1,4 +1,4 @@
-.placeholder::placeholder {
-    color: white;
-    opacity: 1;
+.custom-placeholder::placeholder {
+    color: rgba(255, 255, 255, 0.904) !important; /* Lighter white */
+    opacity: 1 !important; /* Ensures visibility */
 }
