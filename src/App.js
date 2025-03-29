@@ -5,7 +5,7 @@ import Playlist from './Components/Playlist/Playlist';
 import { useState } from 'react';
 
 
-const tracks = [
+/*const tracks = [
   {
     title: 'disk1',
     artist: 'chlmona',
@@ -56,18 +56,20 @@ const tracks = [
     artist: 'chlmona',
     album: 'khloe'
   }
-]
+]*/
 
 function App() {
   const [playlist, setPlaylist] = useState([]);
+  const [tracklist, setTracklist] = useState([]);
+  const [keyword, setKeyword] = useState("");
   return (
     <>
       <Header />
-      <div className='bg-success bg-opacity-50'>
-        <SearchBar />
+      <div className={`bg-success bg-opacity-50 ${!tracklist.length ? 'vh-100' : ''}`}>
+        <SearchBar setTracklist={setTracklist} keyword={keyword} setKeyword={setKeyword} />
         <div className='p-5 d-flex justify-content-between'>
           <div className='w-50 p-5'>
-            <Tracklist playlist={playlist} setPlaylist={setPlaylist} tracks={tracks} />
+            <Tracklist playlist={playlist} setPlaylist={setPlaylist} tracks={tracklist} />
           </div>
           <div className='w-50 p-5'>
             <Playlist playlist={playlist} setPlaylist={setPlaylist} />

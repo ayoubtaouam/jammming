@@ -3,6 +3,10 @@ import PlaylistTrack from "../PlaylistTrack/PlaylistTrack";
 import './PlaylistStyles.css';
 
 function Playlist({playlist, setPlaylist}) {
+    const handleClick = () => {
+        setPlaylist([]);
+    }
+
     return (
         <Card className="bg-success text-light bg-opacity-75">
             <Card.Header className="">
@@ -18,7 +22,7 @@ function Playlist({playlist, setPlaylist}) {
                 }
             </ListGroup>
             <ListGroupItem className="bg-success border border-0 d-flex justify-content-center p-3">
-                <Button variant="light" className="text-success" size="lg">Save your playlist</Button>
+                <Button onClick={handleClick} variant="light" className="text-success" size="lg">Save your playlist</Button>
             </ListGroupItem>
         </Card>
     )

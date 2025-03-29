@@ -3,6 +3,7 @@ import Track from "../Track/Track";
 import Card from 'react-bootstrap/Card';
 
 function Tracklist({tracks, playlist, setPlaylist}) {
+
     return (
         <Card className='bg-success text-light bg-opacity-75'>
             <Card.Header className='fw-bolder fs-2'>List of Tracks</Card.Header>
