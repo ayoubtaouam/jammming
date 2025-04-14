@@ -62,17 +62,19 @@ function App() {
   const [playlist, setPlaylist] = useState([]);
   const [tracklist, setTracklist] = useState([]);
   const [keyword, setKeyword] = useState("");
+  const [username, setUsername] = useState('');
+  const [accessToken, setAccessToken] = useState('');
   return (
     <>
       <Header />
       <div className={`bg-success bg-opacity-50 ${!tracklist.length ? 'vh-100' : ''}`}>
-        <SearchBar setTracklist={setTracklist} keyword={keyword} setKeyword={setKeyword} />
+        <SearchBar setTracklist={setTracklist} keyword={keyword} setKeyword={setKeyword} setUsername={setUsername} accessToken={accessToken} setAccessToken={setAccessToken} />
         <div className='p-5 d-flex justify-content-between'>
           <div className='w-50 p-5'>
             <Tracklist playlist={playlist} setPlaylist={setPlaylist} tracks={tracklist} />
           </div>
           <div className='w-50 p-5'>
-            <Playlist playlist={playlist} setPlaylist={setPlaylist} />
+            <Playlist playlist={playlist} setPlaylist={setPlaylist} username={username} accessToken={accessToken} />
           </div>
         </div>
       </div>

@@ -1,8 +1,25 @@
 import { Card, ListGroup, Button, ListGroupItem, Form, FormControl } from "react-bootstrap";
 import PlaylistTrack from "../PlaylistTrack/PlaylistTrack";
 import './PlaylistStyles.css';
+import { useEffect } from "react";
 
-function Playlist({playlist, setPlaylist}) {
+function Playlist({playlist, setPlaylist, username, setUsername, accessToken}) {
+    const fetchUsername = async () => {
+        try {
+            const response  = await fetch('https://api.spotify.com/v1/me', {headers: {Authorization: `Bearer ${accessToken}`}})
+            if (response.ok) {
+                const responseJson = await response.json();
+                setUsername(responseJson["display_name"]);
+                console.log(username);
+            }
+        } catch(error) {
+            console.log(error.message);
+        }
+        
+    }
+    useEffect(() => {
+        fetchUsername();
+    })
     const handleClick = () => {
         setPlaylist([]);
     }

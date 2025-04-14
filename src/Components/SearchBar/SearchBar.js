@@ -2,10 +2,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { FormControl, FormGroup } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-function SearchBar({setTracklist, keyword ,setKeyword}) {
-    const [accessToken, setAccessToken] = useState('');
+function SearchBar({setTracklist, keyword ,setKeyword, accessToken, setAccessToken}) {
 
     const getAccessToken = async () => {
         const accessTokenRef = await fetch('https://accounts.spotify.com/api/token', {
