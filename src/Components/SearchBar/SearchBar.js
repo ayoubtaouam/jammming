@@ -2,33 +2,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { FormControl, FormGroup } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useEffect } from 'react';
 
-function SearchBar({setTracklist, keyword ,setKeyword, accessToken, setAccessToken}) {
-
-    const getAccessToken = async () => {
-        const accessTokenRef = await fetch('https://accounts.spotify.com/api/token', {
-                        method: 'POST',
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded"
-                        },
-                        body: new URLSearchParams({
-                            'grant_type': 'client_credentials', 
-                            'client_id': '',
-                            'client_secret': '' 
-                        })
-                    })
-                    if (accessTokenRef.ok) {
-                        const jsonResponse = await accessTokenRef.json();
-                        setAccessToken(jsonResponse["access_token"]);
-                    }
-    }
-
-    useEffect(() => {
-        if(!accessToken){
-            getAccessToken();
-        }
-    }, [accessToken])
+function SearchBar({setTracklist, keyword ,setKeyword, accessToken}) {
 
     const handleChange = ({target}) => {
         setKeyword(target.value);
@@ -38,15 +13,7 @@ function SearchBar({setTracklist, keyword ,setKeyword, accessToken, setAccessTok
         const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(keyword)}&type=track`;
         try {
                 const response = await fetch(url, {headers: {Authorization: `Bearer ${accessToken}`}});
-                if (response.status === 401) {
-                    const newtoken = await getAccessToken();
-                    const retryFetch = await fetch(url, {headers: {Authorization: `Bearer ${newtoken}`}});
-                    if (retryFetch.ok) {
-                        const json = await retryFetch.json();
-                        setTracklist(json.tracks.items);
-                    }
-                }
-                else if (response.ok) {
+                if (response.ok) {
                     const jsonResponse = await response.json();
                     const tracklist = jsonResponse.tracks.items;
                     setTracklist(tracklist)

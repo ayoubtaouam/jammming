@@ -13,5 +13,9 @@ const handleLogin = async () => {
 };
 
 export default function Login() {
-    return <Button onClick={handleLogin}>Login with Spotify</Button>;
+    return (
+        <div className="d-flex justify-content-center align-items-center vh-100">
+            <Button variant="success" size="lg" onClick={handleLogin}>Login with Spotify</Button>
+        </div>
+            );
 }

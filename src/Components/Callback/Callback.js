@@ -18,10 +18,15 @@ export default function Callback({setAccessToken}) {
              {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body})
              .then(res => res.json())
              .then(data => {
-                setAccessToken(data.accessToken);
-                window.history.replaceState({}, null, '/');
+                if (data.access_token) {
+                    setAccessToken(data.access_token);
+                    console.log(data.access_token);
+                    window.history.replaceState({}, null, '/');
+                } else {
+                    console.error('Failed to access token');
+                }
              });
-    }, []);
+    }, [setAccessToken]);
 
     return <p>Logging....</p>
 }
