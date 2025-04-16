@@ -16,8 +16,8 @@ function App() {
 
   const isLoggedIn = !!accessToken;
   
-  if (window.location.pathname === '/callback' && accessToken === '') {
-    return <Callback setAccessToken={setAccessToken} />
+  if (window.location.pathname === '/callback') {
+    return <Callback setAccessToken={setAccessToken} setUsername={setUsername} />
   }
   return (
     <>
@@ -27,7 +27,7 @@ function App() {
           <Login/>
         ) : 
         (<>
-          <SearchBar setTracklist={setTracklist} keyword={keyword} setKeyword={setKeyword} setUsername={setUsername} accessToken={accessToken} />
+          <SearchBar setTracklist={setTracklist} keyword={keyword} setKeyword={setKeyword} accessToken={accessToken} />
           <div className='p-5 d-flex justify-content-between'>
             <div className='w-50 p-5'>
               <Tracklist playlist={playlist} setPlaylist={setPlaylist} tracks={tracklist} />

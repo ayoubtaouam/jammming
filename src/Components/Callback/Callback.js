@@ -1,8 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { CLIENT_ID, REDIRECT_URI, TOKEN_ENDPOINT } from "../../Config/authConfig";
 
-export default function Callback({setAccessToken}) {
+export default function Callback({setAccessToken, setUsername}) {
+    const tokenRequested = useRef(false);
     useEffect(() => {
+        if(tokenRequested.current) return;
+        tokenRequested.current = true;
         const code = new URLSearchParams(window.location.search).get('code');
         const verifier = localStorage.getItem("verifier");
 
@@ -21,12 +24,20 @@ export default function Callback({setAccessToken}) {
                 if (data.access_token) {
                     setAccessToken(data.access_token);
                     console.log(data.access_token);
+
+                    fetch('https://api.spotify.com/v1/me',  {headers: {Authorization: `Bearer ${data.access_token}`}})
+                    .then(res => res.json())
+                    .then(profile => {
+                        setUsername(profile.display_name);
+                        console.log(profile.display_name);
+                    })
+
                     window.history.replaceState({}, null, '/');
                 } else {
                     console.error('Failed to access token');
                 }
              });
-    }, [setAccessToken]);
+    }, [setAccessToken, setUsername]);
 
     return <p>Logging....</p>
 }

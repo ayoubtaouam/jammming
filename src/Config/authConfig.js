@@ -1,4 +1,4 @@
-export const CLIENT_ID = '';
+export const CLIENT_ID = 'cd6fc140203b4dd588c66bda9f6ec161';
 export const REDIRECT_URI = 'http://localhost:3000/callback';
 export const SCOPES = [
   'user-read-private',
