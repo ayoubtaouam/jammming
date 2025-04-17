@@ -11,13 +11,13 @@ function App() {
   const [playlist, setPlaylist] = useState([]);
   const [tracklist, setTracklist] = useState([]);
   const [keyword, setKeyword] = useState("");
-  const [username, setUsername] = useState('');
+  const [userId, setUserId] = useState('');
   const [accessToken, setAccessToken] = useState('');
 
   const isLoggedIn = !!accessToken;
   
   if (window.location.pathname === '/callback') {
-    return <Callback setAccessToken={setAccessToken} setUsername={setUsername} />
+    return <Callback setAccessToken={setAccessToken} setUserId={setUserId} />
   }
   return (
     <>
@@ -33,7 +33,7 @@ function App() {
               <Tracklist playlist={playlist} setPlaylist={setPlaylist} tracks={tracklist} />
             </div>
             <div className='w-50 p-5'>
-              <Playlist playlist={playlist} setPlaylist={setPlaylist} username={username} accessToken={accessToken} />
+              <Playlist playlist={playlist} setPlaylist={setPlaylist} userId={userId} accessToken={accessToken} />
             </div>
           </div>
           </>
